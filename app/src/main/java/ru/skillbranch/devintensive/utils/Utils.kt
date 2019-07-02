@@ -24,19 +24,12 @@ object Utils {
 
     var liters: Map<String, String> = mapOf(
         "а" to "a",
-        "А" to "A",
         "б" to "b",
-        "Б" to "B",
         "в" to "v",
-        "В" to "V",
         "г" to "g",
-        "Г" to "G",
         "д" to "d",
-        "Д" to "D",
         "е" to "e",
-        "Е" to "E",
         "ё" to "e",
-        "Ё" to "e",
         "ж" to "zh",
         "з" to "z",
         "и" to "i",
@@ -65,9 +58,9 @@ object Utils {
         "я" to "ya"
     )
 
-    fun transliteration(payload: String, divider: String = " "): String? {
+    fun transliteration(payload: String, divider: String = " "): String {
         var newStr = ""
-        if (divider == "" || !payload.contains(" ")) {
+        if (!payload.contains(" ")) {
             val firstName = payload.toCharArray()
             for (char in firstName) if (char.isUpperCase()) {
                 newStr += liters[char.toString().toLowerCase()]?.capitalize() ?: char.toString()
@@ -76,8 +69,6 @@ object Utils {
             }
         } else {
             val str: List<String> = payload.split(" ")
-            /*val firstName = str[0].toCharArray()
-            var lastName = str[1].toCharArray()*/
 
             for (st in str) {
                 for (char in st.toCharArray()) {
@@ -90,19 +81,6 @@ object Utils {
                 newStr+=divider
             }
             newStr = newStr.dropLast(1)
-            /*var newFirstName = ""
-            var newLastName = ""
-            for (char in firstName) {
-                if (char.isUpperCase()) {
-                    newFirstName += liters[char.toString().toLowerCase()]?.capitalize() ?: char.toString()
-                } else newFirstName += liters[char.toString().toLowerCase()] ?: char.toString()
-            }
-            for (char in lastName) {
-                if (char.isUpperCase()) {
-                    newLastName += liters[char.toString().toLowerCase()]?.capitalize() ?: char.toString()
-                } else newLastName += liters[char.toString().toLowerCase()] ?: char.toString()
-            }
-            return "$newFirstName$divider$newLastName"*/
         }
         return newStr
     }
