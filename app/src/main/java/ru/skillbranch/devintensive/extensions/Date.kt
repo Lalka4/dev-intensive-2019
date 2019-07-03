@@ -9,11 +9,63 @@ const val MINUTE = 60* SECOND
 const val HOUR = 60* MINUTE
 const val DAY = 24* HOUR
 
-enum class TimeUnits{
-    SECOND,
-    MINUTE,
-    HOUR,
-    DAY
+interface Time{
+    fun plural(value: Int){}
+}
+
+enum class TimeUnits:Time {
+    SECOND {
+        override fun plural(value: Int) {
+            val all = 1..Int.MAX_VALUE step 10
+            val all1 = 2..Int.MAX_VALUE step 10
+            val all2 = 3..Int.MAX_VALUE step 10
+            val all3 = 4..Int.MAX_VALUE step 10
+            when (value) {
+                in all -> println("$value секунду")
+                in all1, in all2, in all3 -> println("$value секунды")
+                else -> println("$value секунд")
+            }
+        }
+    },
+    MINUTE {
+        override fun plural(value: Int) {
+            val all = 1..Int.MAX_VALUE step 10
+            val all1 = 2..Int.MAX_VALUE step 10
+            val all2 = 3..Int.MAX_VALUE step 10
+            val all3 = 4..Int.MAX_VALUE step 10
+            when (value) {
+                in all -> println("$value минута")
+                in all1, in all2, in all3 -> println("$value минуты")
+                else -> println("$value минут")
+            }
+        }
+    },
+    HOUR {
+        override fun plural(value: Int) {
+            val all = 1..Int.MAX_VALUE step 10
+            val all1 = 2..Int.MAX_VALUE step 10
+            val all2 = 3..Int.MAX_VALUE step 10
+            val all3 = 4..Int.MAX_VALUE step 10
+            when (value) {
+                in all -> println("$value час")
+                in all1, in all2, in all3 -> println("$value часа")
+                else -> println("$value часов")
+            }
+        }
+    },
+    DAY {
+        override fun plural(value: Int) {
+            val all = 1..Int.MAX_VALUE step 10
+            val all1 = 2..Int.MAX_VALUE step 10
+            val all2 = 3..Int.MAX_VALUE step 10
+            val all3 = 4..Int.MAX_VALUE step 10
+            when (value) {
+                in all -> println("$value день")
+                in all1, in all2, in all3 -> println("$value дня")
+                else -> println("$value дней")
+            }
+        }
+    };
 }
 
 fun Date.format(pattern:String= "HH:mm:ss dd.MM.yy"):String{
