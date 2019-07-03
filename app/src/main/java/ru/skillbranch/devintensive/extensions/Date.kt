@@ -34,7 +34,7 @@ enum class TimeUnits:Time {
             val all2 = 3..Int.MAX_VALUE step 10
             val all3 = 4..Int.MAX_VALUE step 10
             when (value) {
-                in all -> println("$value минута")
+                in all -> println("$value минуту")
                 in all1, in all2, in all3 -> println("$value минуты")
                 else -> println("$value минут")
             }
