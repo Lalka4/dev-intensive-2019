@@ -10,59 +10,61 @@ const val HOUR = 60* MINUTE
 const val DAY = 24* HOUR
 
 interface Time{
-    fun plural(value: Int){}
+    fun plural(value: Int):String{
+        return ""
+    }
 }
 
 enum class TimeUnits:Time {
     SECOND {
-        override fun plural(value: Int) {
+        override fun plural(value: Int):String {
             val all = 1..Int.MAX_VALUE step 10
             val all1 = 2..Int.MAX_VALUE step 10
             val all2 = 3..Int.MAX_VALUE step 10
             val all3 = 4..Int.MAX_VALUE step 10
             when (value) {
-                in all -> println("$value секунду")
-                in all1, in all2, in all3 -> println("$value секунды")
-                else -> println("$value секунд")
+                in all -> return "$value секунду"
+                in all1, in all2, in all3 -> return "$value секунды"
+                else -> return "$value секунд"
             }
         }
     },
     MINUTE {
-        override fun plural(value: Int) {
+        override fun plural(value: Int):String {
             val all = 1..Int.MAX_VALUE step 10
             val all1 = 2..Int.MAX_VALUE step 10
             val all2 = 3..Int.MAX_VALUE step 10
             val all3 = 4..Int.MAX_VALUE step 10
             when (value) {
-                in all -> println("$value минуту")
-                in all1, in all2, in all3 -> println("$value минуты")
-                else -> println("$value минут")
+                in all -> return "$value минуту"
+                in all1, in all2, in all3 -> return "$value минуты"
+                else -> return "$value минут"
             }
         }
     },
     HOUR {
-        override fun plural(value: Int) {
+        override fun plural(value: Int):String {
             val all = 1..Int.MAX_VALUE step 10
             val all1 = 2..Int.MAX_VALUE step 10
             val all2 = 3..Int.MAX_VALUE step 10
             val all3 = 4..Int.MAX_VALUE step 10
             when (value) {
-                in all -> println("$value час")
-                in all1, in all2, in all3 -> println("$value часа")
-                else -> println("$value часов")
+                in all -> return "$value час"
+                in all1, in all2, in all3 -> return "$value часа"
+                else -> return "$value часов"
             }
         }
     },
     DAY {
-        override fun plural(value: Int) {
+        override fun plural(value: Int):String {
             val all = 1..Int.MAX_VALUE step 10
             val all1 = 2..Int.MAX_VALUE step 10
             val all2 = 3..Int.MAX_VALUE step 10
             val all3 = 4..Int.MAX_VALUE step 10
             when (value) {
-                in all -> println("$value день")
-                in all1, in all2, in all3 -> println("$value дня")
-                else -> println("$value дней")
+                in all -> return "$value день"
+                in all1, in all2, in all3 -> return "$value дня"
+                else -> return "$value дней"
             }
         }
     };
